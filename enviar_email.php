@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $termos = isset($_POST["agree"]) ? $_POST["agree"] : "Não aceito";
 
     // Configurações do email
-    $para = "seu_email@example.com"; // Insira o seu endereço de email aqui
+    $para = "contatosmg878@gmail.com"; // Insira o seu endereço de email aqui
     $assunto = "Novo cadastro no site";
 
     // Monta o corpo do email
