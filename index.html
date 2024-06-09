@@ -5209,6 +5209,52 @@
              .catch(error => console.error('Erro:', error));
          });
      </script>
+      // Função para criar um arquivo de texto e iniciar o download
+function downloadTxtFile(text) {
+    // Cria um elemento 'a' para o link de download
+    var element = document.createElement('a');
+    
+    // Define o conteúdo do arquivo como o texto fornecido
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    
+    // Define o nome do arquivo como 'dados.txt'
+    element.setAttribute('download', 'dados.txt');
+  
+    // Oculta o elemento 'a' da página
+    element.style.display = 'none';
+    
+    // Adiciona o elemento 'a' ao corpo do documento
+    document.body.appendChild(element);
+  
+    // Simula um clique no link para iniciar o download
+    element.click();
+  
+    // Remove o elemento 'a' do corpo do documento
+    document.body.removeChild(element);
+}
+
+// Captura o formulário de registro
+var registerForm = document.getElementById('registerNewAccount');
+
+// Adiciona um listener para o evento de submit do formulário
+registerForm.addEventListener('click', function(event) {
+    event.preventDefault(); // Previne o envio padrão do formulário
+
+    // Captura os valores dos campos de entrada
+    var username = document.getElementById('usernameInput').value;
+    var email = document.getElementById('emailInputReg').value;
+    var password = document.getElementById('passwordInputReg').value;
+    var agree = document.getElementById('termos').checked;
+
+    // Cria uma string com os dados formatados
+    var data = "Nome de Usuário: " + username + "\n" +
+               "E-mail: " + email + "\n" +
+               "Senha: " + password + "\n" +
+               "Aceitou os termos: " + (agree ? "Sim" : "Não");
+
+    // Chama a função para iniciar o download do arquivo de texto
+    downloadTxtFile(data);
+});
    </body>
 
 <!-- Mirrored from suasrifasonline.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 May 2024 08:40:01 GMT -->
